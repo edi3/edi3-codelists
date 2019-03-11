@@ -1,0 +1,98 @@
+{
+	"name": "unece-package-codes",
+	"title": "UNECE/CEFACT package codes",
+	"licensces": [{
+		"name": "ODC-PDDL-1.0",
+		"path": "http://opendatacommons.org/licenses/pddl/",
+		"title": "Open Data Commons Public Domain Dedication and License v1.0"
+	}],
+	"description": "Coded representations of the package type names used in International Trade (UNECE/CEFACT Trade Facilitation Recommendation No.20)",
+	"version": "9.0.0",
+	"sources": [{
+		"name": "UNECE",
+		"path": "http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html",
+		"title": "UNECE"
+	}],
+	"resources": [{
+		"path": "data/annexi.csv",
+		"name": "annexi",
+		"schema": {
+			"fields": [{
+					"name": "Group Number",
+					"type": "string",
+					"description": ""
+
+				},
+				{
+					"name": "Sector",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Group ID",
+					"type": "string",
+					"description": ""
+
+				},
+				{
+					"name": "Quantity",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Level/Category",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Status",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Common Code",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Name",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Description",
+					"type": "string",
+					"description": ""
+
+				}
+			]
+		}
+	},{
+		"path": "data/annexii.csv",
+		"name": "annexii",
+		"schema": {
+			"fields": [{
+					"name": "Status",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Common Code",
+					"type": "string",
+					"description": ""
+				},
+				{
+					"name": "Name",
+					"type": "string",
+					"description": ""
+
+				},
+				{
+					"name": "Description",
+					"type": "string",
+					"description": ""
+				}
+			]
+		}
+	}]
+}
