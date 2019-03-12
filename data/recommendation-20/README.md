@@ -9,7 +9,7 @@ Annex II – Code elements listed by unit of measure name; and
 Annex III – Code elements listed by common code.
 
 
-## Data
+## Data Source
 
 Source of information is from the UNECE website: http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
 
@@ -19,8 +19,6 @@ Source of information is from the UNECE website: http://www.unece.org/ro/tradewe
 Change requests should be made by raising an issue in github and completing the template, these changes will then be considered and follow the below process.
 
 Recommendation No. 20 is maintained on behalf of UN/CEFACT by the UN/CEFACT Information Content Management Group (ICG). Proposals for updating this Recommendation should be addressed to the Global Trade Solutions Section, United Nations Economic Commission for Europe, Palais des Nations, CH-1211 Geneva 10, Switzerland or by email (cefact@unece.org).
-
-Requests for addition to the codes should be made to the Information Content Management Group (ICG) at cefact@unece.org
 
 ## License
 
