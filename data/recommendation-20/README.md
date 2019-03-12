@@ -1,6 +1,4 @@
-# unece-recommendation-20
-
-Recommendation No. 20 is maintained on behalf of UN/CEFACT by the UN/CEFACT Information Content Management Group (ICG). Proposals for updating this Recommendation should be addressed to the Global Trade Solutions Section, United Nations Economic Commission for Europe, Palais des Nations, CH-1211 Geneva 10, Switzerland or by email (cefact@unece.org).
+# Recommendation 20 - Codes for Units of Measure Used in International Trade
 
 Recommendation 20 Provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade.
 
@@ -15,6 +13,12 @@ Annex III – Code elements listed by common code.
 
 Source of information is from the UNECE website: http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
 
+
+## Requesting a Change (DMR - Data Maintance Request)
+
+Change requests should be made by raising an issue in github and completing the template, these changes will then be considered and follow the below process.
+
+Recommendation No. 20 is maintained on behalf of UN/CEFACT by the UN/CEFACT Information Content Management Group (ICG). Proposals for updating this Recommendation should be addressed to the Global Trade Solutions Section, United Nations Economic Commission for Europe, Palais des Nations, CH-1211 Geneva 10, Switzerland or by email (cefact@unece.org).
 
 Requests for addition to the codes should be made to the Information Content Management Group (ICG) at cefact@unece.org
 
