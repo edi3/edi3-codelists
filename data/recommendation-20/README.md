@@ -8,11 +8,9 @@ Annex I – Code elements listed by quantity category;
 Annex II – Code elements listed by unit of measure name; and
 Annex III – Code elements listed by common code.
 
-
 ## Data Source
 
 Source of information is from the UNECE website: http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
-
 
 ## Requesting a Change (DMR - Data Maintance Request)
 
