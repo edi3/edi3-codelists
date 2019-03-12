@@ -1,6 +1,6 @@
 {
-	"name": "unece-package-codes",
-	"title": "UNECE/CEFACT package codes",
+	"name": "units-of-measure",
+	"title": "UNECE/CEFACT Units of Measure",
 	"licensces": [{
 		"name": "ODC-PDDL-1.0",
 		"path": "http://opendatacommons.org/licenses/pddl/",
