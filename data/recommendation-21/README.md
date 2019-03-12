@@ -1,20 +1,16 @@
-Coded representations of the package type names used in International Trade (UNECE/CEFACT Trade Facilitation Recommendation No.21)
+# Recommendation 21 - Codes for Passengers, Types of Cargo, Packages and Packaging Materials (with Complementary Codes for Package Names)
 
-## Data
+Recommendation 21 presents coded representations for the package type names used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade.
+
+## Data Source
 
 Source of information is from the UNECE website: http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
 
-All data from UNECE has to be available in an easily distributable format, in this case it is an .xls file to process I simply removed any lines with a status of 'X' and removed the numeric code column as it's of little useable value
+## Requesting a Change (DMR - Data Maintance Request)
 
-Meaning of status codes:
+Change requests should be made by raising an issue in github and completing the template, these changes will then be considered and follow the below process.
 
-A plus sign (+) Added. New unit added in this release of the code list.;
-A hash sign (#) Changed name. Changes to the unit name in this release of the code list;
-A vertical bar (¦) Changed characteristic(s). Changes other than to the unit name in this release of the code list, e.g. a change to the numeric code.
-A letter X (X) Marked as deleted. Code entries marked as deleted will be retained indefinitely in the code lists. When appropriate, these entries may subsequently be reinstated via the maintenance process;
-An equals Reinstated. Code entries previously sign (=) Marked as deleted and reinstated in this release of the code list.
-
-Requests for addition to the codes should be made to the Information Content Management Group (ICG) at cefact@unece.org
+Recommendation No. 21 is maintained on behalf of UN/CEFACT by the UN/CEFACT Information Content Management Group (ICG). Proposals for updating this Recommendation should be addressed to the Global Trade Solutions Section, United Nations Economic Commission for Europe, Palais des Nations, CH-1211 Geneva 10, Switzerland or by email (cefact@unece.org).
 
 ## License
 

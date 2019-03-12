@@ -1,14 +1,16 @@
-# unece-recommendation-24
-
-Coded representations of the package type names used in International Trade (UNECE/CEFACT Trade Facilitation Recommendation No.24)
-
-## Data
-
-Source of information is from the UNECE website: http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
+# Recommendation 24 - Trade and Transport Status Codes
 
 Recommendation 24 provides Transport Status Codes to satisfy requirements for exchanging coded information about the status of consignments, goods or means of transport at a certain time or place in the transport chain. Representation of Transport Status Codes can be given in plain language or in coded form. The codes provided for in the Recommendation are for use in manual and/or automated systems of information exchange in international trade
 
-Requests for addition to the codes should be made to the Information Content Management Group (ICG) at cefact@unece.org
+## Data Source
+
+Source of information is from the UNECE website: http://www.unece.org/ro/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
+
+## Requesting a Change (DMR - Data Maintance Request)
+
+Change requests should be made by raising an issue in github and completing the template, these changes will then be considered and follow the below process.
+
+Recommendation No. 24 is maintained on behalf of UN/CEFACT by the UN/CEFACT Information Content Management Group (ICG). Proposals for updating this Recommendation should be addressed to the Global Trade Solutions Section, United Nations Economic Commission for Europe, Palais des Nations, CH-1211 Geneva 10, Switzerland or by email (cefact@unece.org).
 
 ## License
 

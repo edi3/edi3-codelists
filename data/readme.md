@@ -20,3 +20,6 @@ Annex III – Code elements listed by common code.
 
 Recommendation 21 presents coded representations for the package type names used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade.
 
+## Recommendation 24 - Trade and Transport Status Codes
+
+Recommendation 24 provides Transport Status Codes to satisfy requirements for exchanging coded information about the status of consignments, goods or means of transport at a certain time or place in the transport chain. Representation of Transport Status Codes can be given in plain language or in coded form. The codes provided for in the Recommendation are for use in manual and/or automated systems of information exchange in international trade
