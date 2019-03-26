@@ -2,12 +2,16 @@ openapi: 3.0.1
 info:
   title: UNECE Recommendation 20 - Codes for Units of Measure Used in International Trade
   description: |
-    Recommendation 20 Provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade.Facilitates use of Recommendation 20. The code list is presented in three separate annexes;
-    Annex I – Code elements listed by quantity category;
-    Annex II – Code elements listed by unit of measure name;
-    Annex III – Code elements listed by common code.
+    Recommendation 20 Provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade.Facilitates use of Recommendation 20. The code list is presented in three separate annexes.
 
-    Website https://www.unece.org/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
+    Annex I – Code elements listed by quantity category;
+
+    Annex II – Code elements listed by unit of measure name;
+
+    Annex III – Code elements listed by common code;
+  contact:
+    name: UNECE Recommendations
+    url: https://www.unece.org/tradewelcome/un-centre-for-trade-facilitation-and-e-business-uncefact/outputs/cefactrecommendationsrec-index/code-list-recommendations.html
   version: "3.0.1-oas3"
 servers:
 - url: "tbd"
