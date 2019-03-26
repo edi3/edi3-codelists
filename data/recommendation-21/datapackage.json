@@ -25,11 +25,18 @@
 				},
 				{
 					"name": "Name",
-					"type": "string"
+					"type": "string",
+					"description": "Code value name"
 				},
 				{
 					"name": "Description",
-					"type": "string"
+					"type": "string",
+					"description": "A plain text specification"
+				}
+				{
+					"name": "Numeric Code",
+					"type": "string",
+					"description": "Two digit numeric code value"
 				}
 			]
 		}
