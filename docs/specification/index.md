@@ -89,11 +89,14 @@ Any number of addiotnal columns can be added to represent additional properties 
 
 ## Canonical Representation
 
+Each code list is maintained in a seaprate folder of the same name under the docs folder in the edi3.org codelists repository https://github.com/edi3/edi3-codelists/tree/master/docs.  For example a file similar to the snippet below would be located at /rec20/codes.json
+
+
 ```
 {
 	"@Context":"https://edi3.org",
 	"@Type":"codelist",
-	"@id":"https://edi3.org/codelists/rec20",
+	"@id":"https://edi3.org/codelists/rec20/1.0",
 	"name":"rec20",
 	"description":"Units of measure",
 	"version":"1.0",
@@ -129,6 +132,31 @@ Any number of addiotnal columns can be added to represent additional properties 
 
 
 # CodeList Publishing
+
+All edi3.org codelists are published as consumable APIs according to the following end-point structure
+
+Base URL ``` https://api.edi3.org/codelists ```
+
+|GET Path|Parameter Options|Response|
+|---|---|---|
+|Base URL|versions=all/latest (default = latest)| list of available code lists and versions |
+|/{codelist}/{version} if version not specified, latest list is returned|name__{operator}=value, {anyProperty}__{operator}=value, responseSet=minimal/full (default=minimal)| list of codes from the specified codelist that match query parameters. |
+|/{codelist}/{version}/{code name}|none|returns full details of a specific code|
+
+
+For example, the following query would return the structure shown in the canonical form snippet in the previous section
+
+```
+GET https://edi3.org/codelists/rec20/1.0?canonicalUnit=MTQ&responseSet=full
+```
+
+
+Notes
+
+* The query respomnse format is always the canonical form described in the previous section.  Just the header part is returned when the query is about codelists. The full srtucture is returned when the query is for codes within a list.
+* HTTP header Accept value can be set to either text/html (returns a formatted web page) or application/json (returns the JSON data with JSON-LD context headers)
+* operators on query parameters are defined using "dunder" as per query parameters section of the edi3 [Open API design rules](https://edi3.org/api-ndr/).
+* list responses are paginated as defined in the pagination section of the edi3 [Open API design rules](https://edi3.org/api-ndr/).
 
 
 
