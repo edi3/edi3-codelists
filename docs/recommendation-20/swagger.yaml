@@ -20,63 +20,29 @@ paths:
       get:
         tags:
         - quantityCategory
-        summary: get a unit of measure from a code as defined in rec 20 - source is quantityCategory
+        summary: |
+          Get a unit of measure from a code as defined in rec 20 - source is quantityCategory.
         description: "This api returns the details of a single unit of measure"
         parameters:
-        - name: commonCode
-          in: path
-          required: true
-          schema:
-            type: string
-          description: |
-            This is the recommended single list of standard codes which is based on the following conventions.
-
-            The representation format for the code values shall be alphanumeric variable length 3 characters (an..3); wherever possible, existing code values are retained according to the following order of precedence for assigning values
-
-              - (a) alphabetic code values for units of measure as in UN/ECE
-                  Recommendation No. 20, edition 1985;
-
-              - (b) alphanumeric code values for units of measure as in ANSI ASC X12 data
-                element number 355;
+          - $ref: '#/components/parameters/commonCode'
         responses:
-          200:
+          '200':
             description: Successfull operation
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/UnitOfMeasure'
+                  $ref: '#/components/schemas/QuantityCategory'
                 example:
                 - commonCode: 10
                   name: group
                   description: A unit of count defining the number of groups (group; set of items classified together).
                   category: 3.9
-          400:
-            description: ' Bad request - Issue with parameter'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                example:
-                  identifier: a710a2af-4f0d-458b-8792-23fe4f736d9d
-                  error: pagesize needs to be between 1 and 1000.
-          404:
-            description: No data found
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                example:
-                  identifier: b1f1fef1-59ad-4978-bed8-3ff96d6d3587
-                  error: No units of measure found
-          500:
-            description: Internal Server Error
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Error'
-                example:
-                  identifier: 0407936e-d2ad-41e9-99e2-05a5919c3075
-                  error: An unexpected exception occured
+          '400':
+            $ref: '#/components/responses/BadRequest'
+          '404':
+            $ref: '#/components/responses/NotFound'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
   /quantityCategory:
     get:
       tags:
@@ -84,138 +50,48 @@ paths:
       summary: Search for units of measure as defined in rec 20 - source is quantityCategory
       description: This api will return a (paged) list of units of measure codes
       parameters:
-      - name: groupNumber
-        in: query
-        description: ""
-        schema:
-          type: string
-      - name: sector
-        in: query
-        description: "Name of the sector in plain english"
-        schema:
-          type: string
-      - name: groupID
-        in: query
-        description: ""
-        schema:
-          type: string
-      - name: quantity
-        in: query
-        description: "The name of the physical phenomenon being measured"
-        schema:
-          type: string
-      - name: level
-        in: query
-        description: |
-          Identification of the normative or informative relevance of the unit (Level / Category).
-
-          - Level 1 - normative = SI normative units, standard and commonly used multiples
-
-                NOTE: standard multiples are identified with "S" and commonly used multiples with "M"
-                e.g. "1 metre", "1S centimetre", "1M hectometre").
-
-          - Level 2 – normative equivalent = SI normative equivalent units (UK, US, etc.) and
-          commonly used multiples.
-
-          - Level 3 – informative = 9 categories of informative units (units of count and other
-          miscellaneous units), invariably with no comprehensive conversion factor to SI.
-          These units are provided for information and to facilitate the assignment and usage of
-          a common code value to represent such units.
-            - 3.1 Qualified base units from levels 1 and 2
-            - 3.2 Sales units
-            - 3.3 Packing units
-            - 3.4 Shipping and transportation units
-            - 3.5 Industry specific units (various)
-            - 3.6 Information technology units
-            - 3.7 Integers/Numbers/Ratios
-            - 3.8 Multiples/Fractions/Decimals
-            - 3.9 Miscellaneous
-        schema:
-          type: string
-      - name: commonCode
-        in: query
-        description: "This is the recommended single list of standard codes"
-        schema:
-          type: string
-      - name: name
-        in: query
-        description: "The name of the unit of measure"
-        schema:
-          type: string
-      - name: description
-        in: query
-        description: "A plain text specification of the named unit of measure"
-        schema:
-          type: string
+      - $ref: '#/components/parameters/groupNumber'
+      - $ref: '#/components/parameters/sector'
+      - $ref: '#/components/parameters/groupID'
+      - $ref: '#/components/parameters/quantity'
+      - $ref: '#/components/parameters/level'
+      - $ref: '#/components/parameters/commonCodeQuery'
+      - $ref: '#/components/parameters/name'
+      - $ref: '#/components/parameters/description'
       responses:
-        200:
+        '200':
           description: Successful Operation
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/UnitOfMeasure'
+                  $ref: '#/components/schemas/QuantityCategory'
                 type: array
               example:
-              - GroupNumber: 01
-                Sector: Space and Time
-                GroupID: 17
-                Quantity: solid angle
-                Level/Category: 1S
-                CommonCode: M55
-                Name: metre per radiant
-                Description: Unit of the translation factor for implementation from rotation to linear movement.
-        400:
-          description: ' Bad request - Issue with parameter'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: a710a2af-4f0d-458b-8792-23fe4f736d9d
-                error: pagesize needs to be between 1 and 1000.
-        404:
-          description: No data found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: b1f1fef1-59ad-4978-bed8-3ff96d6d3587
-                error: No quantity measure found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: 0407936e-d2ad-41e9-99e2-05a5919c3075
-                error: An unexpected exception occured
+              - groupNumber: 01
+                sector: Space and Time
+                groupID: 17
+                quantity: solid angle
+                level: 1S
+                commonCode: M55
+                name: metre per radiant
+                description: Unit of the translation factor for implementation from rotation to linear movement.
+        '400':
+            $ref: '#/components/responses/BadRequest'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /unitsOfMeasure/{commonCode}:
     get:
       tags:
       - unitsOfMeasure
-      summary: get a unit of measure from a code as defined in rec 20 - source is units of Measure
+      summary: get a unit of measure from a code as defined in rec 20 - source is units of Measure.
       description: "This api returns the details of a single unit of measure"
       parameters:
-      - name: commonCode
-        in: path
-        required: true
-        schema:
-          type: string
-        description: |
-          This is the recommended single list of standard codes which is based on the following conventions.
-
-          The representation format for the code values shall be alphanumeric variable length 3 characters (an..3); wherever possible, existing code values are retained according to the following order of precedence for assigning values
-
-            - (a) alphabetic code values for units of measure as in UN/ECE
-                Recommendation No. 20, edition 1985;
-
-            - (b) alphanumeric code values for units of measure as in ANSI ASC X12 data
-              element number 355;
+        - $ref: '#/components/parameters/commonCode'
       responses:
-        200:
+        '200':
           description: Successfull operation
           content:
             application/json:
@@ -226,33 +102,12 @@ paths:
                 name: group
                 description: A unit of count defining the number of groups (group; set of items classified together).
                 category: 3.9
-        400:
-          description: ' Bad request - Issue with parameter'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: a710a2af-4f0d-458b-8792-23fe4f736d9d
-                error: pagesize needs to be between 1 and 1000.
-        404:
-          description: No data found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: b1f1fef1-59ad-4978-bed8-3ff96d6d3587
-                error: No units of measure found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: 0407936e-d2ad-41e9-99e2-05a5919c3075
-                error: An unexpected exception occured
+        '400':
+            $ref: '#/components/responses/BadRequest'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /unitsOfMeasure:
     get:
       tags:
@@ -260,51 +115,12 @@ paths:
       summary: Search for units of measure as defined in rec 20 - source is units of Measure
       description: This api will return a (paged) list of units of measure codes
       parameters:
-      - name: commonCode
-        in: query
-        description: "This is the recommended single list of standard codes"
-        schema:
-          type: string
-      - name: name
-        in: query
-        description: "The name of the unit of measure"
-        schema:
-          type: string
-      - name: description
-        in: query
-        description: "A plain text specification of the named unit of measure"
-        schema:
-          type: string
-      - name: level
-        in: query
-        description: |
-          Identification of the normative or informative relevance of the unit (Level / Category).
-
-          - Level 1 - normative = SI normative units, standard and commonly used multiples
-
-                NOTE: standard multiples are identified with "S" and commonly used multiples with "M"
-                e.g. "1 metre", "1S centimetre", "1M hectometre").
-
-          - Level 2 – normative equivalent = SI normative equivalent units (UK, US, etc.) and
-          commonly used multiples.
-
-          - Level 3 – informative = 9 categories of informative units (units of count and other
-          miscellaneous units), invariably with no comprehensive conversion factor to SI.
-          These units are provided for information and to facilitate the assignment and usage of
-          a common code value to represent such units.
-            - 3.1 Qualified base units from levels 1 and 2
-            - 3.2 Sales units
-            - 3.3 Packing units
-            - 3.4 Shipping and transportation units
-            - 3.5 Industry specific units (various)
-            - 3.6 Information technology units
-            - 3.7 Integers/Numbers/Ratios
-            - 3.8 Multiples/Fractions/Decimals
-            - 3.9 Miscellaneous
-        schema:
-          type: string
+      - $ref: '#/components/parameters/commonCodeQuery'
+      - $ref: '#/components/parameters/name'
+      - $ref: '#/components/parameters/description'
+      - $ref: '#/components/parameters/level'
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -313,38 +129,138 @@ paths:
                   $ref: '#/components/schemas/UnitOfMeasure'
                 type: array
               example:
-              - CommonCode: 10
-                Name: group
-                Description: A unit of count defining the number of groups (group; set of items classified together).
-                Level/Category: 3.9
-        400:
-          description: ' Bad request - Issue with parameter'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: a710a2af-4f0d-458b-8792-23fe4f736d9d
-                error: pagesize needs to be between 1 and 1000.
-        404:
-          description: No data found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: b1f1fef1-59ad-4978-bed8-3ff96d6d3587
-                error: No units of measure found
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-              example:
-                identifier: 0407936e-d2ad-41e9-99e2-05a5919c3075
-                error: An unexpected exception occured
+              - commonCode: 10
+                name: group
+                description: A unit of count defining the number of groups (group; set of items classified together).
+                level: 3.9
+        '400':
+            $ref: '#/components/responses/BadRequest'
+        '404':
+            $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    commonCode:
+      name: commonCode
+      in: path
+      required: true
+      schema:
+        type: string
+      description: |
+        This is the recommended single list of standard codes which is based on the following conventions.
+
+        The representation format for the code values shall be alphanumeric variable length 3 characters (an..3); wherever possible, existing code values are retained according to the following order of precedence for assigning values
+
+          - (a) alphabetic code values for units of measure as in UN/ECE
+              Recommendation No. 20, edition 1985;
+
+          - (b) alphanumeric code values for units of measure as in ANSI ASC X12 data
+            element number 355;
+          - name: groupNumber
+        in: query
+        description: ""
+        schema:
+          type: string
+    groupNumber:    
+      name: groupNumber
+      in: query
+      description: ""
+      schema:
+        type: string
+    sector:
+      name: sector
+      in: query
+      description: "Name of the sector in plain english"
+      schema:
+        type: string
+    groupID:    
+      name: groupID
+      in: query
+      description: ""
+      schema:
+        type: string
+    quantity:
+      name: quantity
+      in: query
+      description: "The name of the physical phenomenon being measured"
+      schema:
+        type: string
+    level:
+      name: level
+      in: query
+      description: |
+        Identification of the normative or informative relevance of the unit (Level / Category).
+
+        - Level 1 - normative = SI normative units, standard and commonly used multiples
+
+              NOTE: standard multiples are identified with "S" and commonly used multiples with "M"
+              e.g. "1 metre", "1S centimetre", "1M hectometre").
+
+        - Level 2 – normative equivalent = SI normative equivalent units (UK, US, etc.) and
+        commonly used multiples.
+
+        - Level 3 – informative = 9 categories of informative units (units of count and other
+        miscellaneous units), invariably with no comprehensive conversion factor to SI.
+        These units are provided for information and to facilitate the assignment and usage of
+        a common code value to represent such units.
+          - 3.1 Qualified base units from levels 1 and 2
+          - 3.2 Sales units
+          - 3.3 Packing units
+          - 3.4 Shipping and transportation units
+          - 3.5 Industry specific units (various)
+          - 3.6 Information technology units
+          - 3.7 Integers/Numbers/Ratios
+          - 3.8 Multiples/Fractions/Decimals
+          - 3.9 Miscellaneous
+      schema:
+        type: string
+    commonCodeQuery:
+      name: commonCode
+      in: query
+      description: "This is the recommended single list of standard codes"
+      schema:
+        type: string
+    name:
+      name: name
+      in: query
+      description: "The name of the unit of measure"
+      schema:
+        type: string
+    description:
+      name: description
+      in: query
+      description: "A plain text specification of the named unit of measure"
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: Bad request - Issue with parameter
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            identifier: a710a2af-4f0d-458b-8792-23fe4f736d9d
+            error: pagesize needs to be between 1 and 1000.
+    NotFound:
+      description: No data found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            identifier: b1f1fef1-59ad-4978-bed8-3ff96d6d3587
+            error: No units of measure found
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            identifier: 0407936e-d2ad-41e9-99e2-05a5919c3075
+            error: An unexpected exception occured    
   schemas:
     Error:
       type: object
@@ -353,68 +269,104 @@ components:
           type: string
         error:
           type: string
-    UnitOfMeasure:
+    QuantityCategory:
       type: object
       properties:
-        commonCode:
-          description: |
-            This is the recommended single list of standard codes which is based on the following conventions.
-
-            The representation format for the code values shall be alphanumeric variable length 3 characters (an..3); wherever possible, existing code values are retained according to the following order of precedence for assigning values
-
-            - (a) alphabetic code values for units of measure as in UN/ECE
-                Recommendation No. 20, edition 1985;
-
-            - (b) alphanumeric code values for units of measure as in ANSI ASC X12 data
-              element number 355;
-          type: string
-        name:
-          description: "The name of the unit of measure"
-          type: string
-        description:
-          description: "A plain text specification of the named unit of measure"
-          type: string
-        level:
-          description: |
-            Identification of the normative or informative relevance of the unit (Level / Category).
-
-            - Level 1 - normative = SI normative units, standard and commonly used multiples
-
-                  NOTE: standard multiples are identified with "S" and commonly used multiples with "M"
-                  e.g. "1 metre", "1S centimetre", "1M hectometre").
-
-            - Level 2 – normative equivalent = SI normative equivalent units (UK, US, etc.) and
-            commonly used multiples.
-
-            - Level 3 – informative = 9 categories of informative units (units of count and other
-            miscellaneous units), invariably with no comprehensive conversion factor to SI.
-            These units are provided for information and to facilitate the assignment and usage of
-            a common code value to represent such units.
-              - 3.1 Qualified base units from levels 1 and 2
-              - 3.2 Sales units
-              - 3.3 Packing units
-              - 3.4 Shipping and transportation units
-              - 3.5 Industry specific units (various)
-              - 3.6 Information technology units
-              - 3.7 Integers/Numbers/Ratios
-              - 3.8 Multiples/Fractions/Decimals
-              - 3.9 Miscellaneous
+        groupNumber:
+          description: ""
           type: string
         sector:
           description: "Name of the sector in plain english"
           type: string
-        symbol:
-          description: "The symbol used to represent the unit of measure as in ISO 31 / 80000."
-          type: string
-        conversionFactor:
-          description: "Conversion factor to SI"
+        groupID:
+          description: ""
           type: string
         quantity:
-          description: |
-            The name of the physical phenomenon being measured.
+          $ref: '#/components/schemas/Quantity'
+        level:
+          $ref: '#/components/schemas/Level'
+        commonCode:
+          $ref: '#/components/schemas/CommonCode'
+        name:
+          $ref: '#/components/schemas/Name'
+        conversionFactor:
+          $ref: '#/components/schemas/ConversionFactor'
+        symbol:
+          $ref: '#/components/schemas/Symbol'
+        description:
+          $ref: '#/components/schemas/Description'
+    UnitOfMeasure:
+      type: object
+      properties:
+        commonCode:
+          $ref: '#/components/schemas/CommonCode'
+        name:
+          $ref: '#/components/schemas/Name'
+        description:
+          $ref: '#/components/schemas/Description'
+        level:
+          $ref: '#/components/schemas/Level'
+        symbol:
+          $ref: '#/components/schemas/Symbol'
+        conversionFactor:
+          $ref: '#/components/schemas/ConversionFactor'
+    CommonCode:
+      description: |
+        This is the recommended single list of standard codes which is based on the following conventions.
 
-            - (a) In levels 1 and 2 (SI or SI equivalent), the phenomena pertaining to a certain
-            category are listed under a heading giving the name of the relevant part in ISO 31;
-            - (b) In level 3 they are broken down into the 9 categories as defined below under
-            level/catgory.
-          type: string
+        The representation format for the code values shall be alphanumeric variable length 3 characters (an..3); wherever possible, existing code values are retained according to the following order of precedence for assigning values
+
+        - (a) alphabetic code values for units of measure as in UN/ECE
+            Recommendation No. 20, edition 1985;
+
+        - (b) alphanumeric code values for units of measure as in ANSI ASC X12 data
+          element number 355;
+      type: string
+    ConversionFactor:
+      description: "The value used to convert units to the equivalent SI unit when applicable."
+      type: string
+    Description:
+      description: |
+        A plain text specification of the named unit of measure, not exceeding 350 characters in length and in English. It should be noted that such descriptions shall be progressively introduced for existing entries and where possible, shall be taken from recognized sources. All new entries having no conversion factor to SI units shall be applied to the code list with a description. A description is optional for units provided with a conversion factor.
+      type: string
+    Level:
+      description: |
+        Identification of the normative or informative relevance of the unit (Level / Category).
+
+        - Level 1 - normative = SI normative units, standard and commonly used multiples
+
+              NOTE: standard multiples are identified with "S" and commonly used multiples with "M"
+              e.g. "1 metre", "1S centimetre", "1M hectometre").
+
+        - Level 2 – normative equivalent = SI normative equivalent units (UK, US, etc.) and
+        commonly used multiples.
+
+        - Level 3 – informative = 9 categories of informative units (units of count and other
+        miscellaneous units), invariably with no comprehensive conversion factor to SI.
+        These units are provided for information and to facilitate the assignment and usage of
+        a common code value to represent such units.
+          - 3.1 Qualified base units from levels 1 and 2
+          - 3.2 Sales units
+          - 3.3 Packing units
+          - 3.4 Shipping and transportation units
+          - 3.5 Industry specific units (various)
+          - 3.6 Information technology units
+          - 3.7 Integers/Numbers/Ratios
+          - 3.8 Multiples/Fractions/Decimals
+          - 3.9 Miscellaneous
+      type: string
+    Name:
+      description: "The name of the unit of measure"
+      type: string
+    Symbol:
+      description: "The symbol used to represent the unit of measure as in ISO 31 / 80000."
+      type: string
+    Quantity:
+      description: |
+        The name of the physical phenomenon being measured.
+
+        - (a) In levels 1 and 2 (SI or SI equivalent), the phenomena pertaining to a certain
+        category are listed under a heading giving the name of the relevant part in ISO 31;
+        - (b) In level 3 they are broken down into the 9 categories as defined below under
+        level/catgory.
+      type: string
